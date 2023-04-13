@@ -55,7 +55,7 @@ Thu Apr 13, 2023
 
     COD_DEPE2  = Código de dependencia escolar
                  1 = Municipal
-                 2 = Particular Subvecnionado
+                 2 = Particular Siubvencionada
                  3 = Particular Pagado
                  4 = Coporación de Administración delegada
                  5 = Servicio Local de Educación
@@ -69,8 +69,6 @@ Thu Apr 13, 2023
                  2 = Tarde
                  3 = Mañana y Tarde
                  4 = Vespertina/Noctura
-
-    LET_CUR    = Letra del curso
 
     MRUN       = Máscara del RUN del alumno
                  Código único que identifica al estudiante en los registros nacionales.
@@ -160,19 +158,19 @@ dplyr::glimpse(data_notas)
 
     ## Rows: 144,760
     ## Columns: 13
-    ## $ AGNO       [3m[38;5;246m<int>[39m[23m 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022,…
-    ## $ RBD        [3m[38;5;246m<int>[39m[23m 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,…
-    ## $ LET_CUR    [3m[38;5;246m<chr>[39m[23m "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A",…
-    ## $ COD_DEPE2  [3m[38;5;246m<int>[39m[23m 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,…
-    ## $ COD_ENSE2  [3m[38;5;246m<int>[39m[23m 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,…
-    ## $ RURAL_RBD  [3m[38;5;246m<int>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-    ## $ COD_JOR    [3m[38;5;246m<int>[39m[23m 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,…
-    ## $ MRUN       [3m[38;5;246m<int>[39m[23m 34574, 262460, 1237591, 2370451, 2636357, 2673946, 2780597,…
-    ## $ GEN_ALU    [3m[38;5;246m<int>[39m[23m 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1,…
-    ## $ EDAD_ALU   [3m[38;5;246m<int>[39m[23m 17, 19, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 18, 18, 17,…
-    ## $ PROM_GRAL  [3m[38;5;246m<dbl>[39m[23m 6.9, 5.4, 6.7, 7.0, 5.7, 5.7, 7.0, 6.8, 0.0, 7.0, 6.6, 6.8,…
-    ## $ ASISTENCIA [3m[38;5;246m<int>[39m[23m 98, 97, 98, 100, 95, 85, 100, 100, 0, 100, 98, 98, 100, 100…
-    ## $ SIT_FIN_R  [3m[38;5;246m<chr>[39m[23m "P", "P", "P", "P", "P", "P", "P", "P", "T", "P", "P", "P",…
+    ## $ AGNO       <int> 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022,…
+    ## $ RBD        <int> 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,…
+    ## $ LET_CUR    <chr> "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A",…
+    ## $ COD_DEPE2  <int> 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,…
+    ## $ COD_ENSE2  <int> 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,…
+    ## $ RURAL_RBD  <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+    ## $ COD_JOR    <int> 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,…
+    ## $ MRUN       <int> 34574, 262460, 1237591, 2370451, 2636357, 2673946, 2780597,…
+    ## $ GEN_ALU    <int> 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1,…
+    ## $ EDAD_ALU   <int> 17, 19, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 18, 18, 17,…
+    ## $ PROM_GRAL  <dbl> 6.9, 5.4, 6.7, 7.0, 5.7, 5.7, 7.0, 6.8, 0.0, 7.0, 6.6, 6.8,…
+    ## $ ASISTENCIA <int> 98, 97, 98, 100, 95, 85, 100, 100, 0, 100, 98, 98, 100, 100…
+    ## $ SIT_FIN_R  <chr> "P", "P", "P", "P", "P", "P", "P", "P", "T", "P", "P", "P",…
 
 ``` r
 # Notas: dplyr::glimpse() es  una función que nos sirve para producir una vista previa de datos.
@@ -257,7 +255,7 @@ muestra_n400 <- dplyr::slice_sample(
 
 # Nota: la función dplyr::slice_sample(), permite crear muestras aleatorias simples.
 #       Esta función toma como argumentos a "n = ", con el cual podemos especificar el tamaño de la muestra que queremos.
-#       Además, con el argumetno "replace = TRUE", le indicamos a R que pueda generar muestras aleatorias,
+#       Además, con el argumento "replace = TRUE", le indicamos a R que pueda generar muestras aleatorias,
 #       que tengan la misma probabilidad de ocurrir. Es decir que, las muestras generadas, podrían repetir
 #       observaciones entre cada muestreo, replica del ejercicio.
 #       Previo a la generacion de la muestra, fijamos el seed, para poder replicar los resultados generados.
@@ -269,6 +267,21 @@ muestra_n400 <- dplyr::slice_sample(
   confianza sobre la media de esta muestra.
 
 - Como atajo, vamos a emplear un modelo de regresión nulo.
+
+``` r
+library(dplyr)
+```
+
+    ## 
+    ## Attaching package: 'dplyr'
+
+    ## The following objects are masked from 'package:stats':
+    ## 
+    ##     filter, lag
+
+    ## The following objects are masked from 'package:base':
+    ## 
+    ##     intersect, setdiff, setequal, union
 
 ``` r
 # extraer el intervalo de confianza sobre la media
@@ -329,20 +342,20 @@ dplyr::glimpse()
 
     ## Rows: 200,000
     ## Columns: 14
-    ## $ sample     [3m[38;5;246m<chr>[39m[23m "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",…
-    ## $ AGNO       [3m[38;5;246m<int>[39m[23m 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022,…
-    ## $ RBD        [3m[38;5;246m<int>[39m[23m 769, 9078, 20181, 14783, 26269, 12603, 16728, 24976, 25855,…
-    ## $ LET_CUR    [3m[38;5;246m<chr>[39m[23m "B", "A", "C", "B", "A", "C", "A", "A", "B", "B", "A", "B",…
-    ## $ COD_DEPE2  [3m[38;5;246m<int>[39m[23m 2, 1, 2, 2, 2, 2, 2, 3, 1, 2, 2, 1, 3, 1, 2, 2, 2, 1, 2, 3,…
-    ## $ COD_ENSE2  [3m[38;5;246m<int>[39m[23m 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,…
-    ## $ RURAL_RBD  [3m[38;5;246m<int>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-    ## $ COD_JOR    [3m[38;5;246m<int>[39m[23m 1, 1, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 1, 3, 3, 1, 3, 3, 3, 3,…
-    ## $ MRUN       [3m[38;5;246m<int>[39m[23m 19356346, 6516136, 11669840, 15538980, 22189478, 2582970, 2…
-    ## $ GEN_ALU    [3m[38;5;246m<int>[39m[23m 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2,…
-    ## $ EDAD_ALU   [3m[38;5;246m<int>[39m[23m 18, 17, 18, 18, 17, 17, 18, 17, 17, 17, 17, 18, 17, 17, 18,…
-    ## $ PROM_GRAL  [3m[38;5;246m<dbl>[39m[23m 6.4, 5.8, 6.4, 5.8, 5.6, 6.6, 6.8, 6.0, 6.3, 6.0, 6.4, 5.9,…
-    ## $ ASISTENCIA [3m[38;5;246m<int>[39m[23m 97, 82, 71, 92, 97, 95, 86, 91, 96, 97, 95, 85, 98, 81, 93,…
-    ## $ SIT_FIN_R  [3m[38;5;246m<chr>[39m[23m "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P",…
+    ## $ sample     <chr> "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",…
+    ## $ AGNO       <int> 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022,…
+    ## $ RBD        <int> 769, 9078, 20181, 14783, 26269, 12603, 16728, 24976, 25855,…
+    ## $ LET_CUR    <chr> "B", "A", "C", "B", "A", "C", "A", "A", "B", "B", "A", "B",…
+    ## $ COD_DEPE2  <int> 2, 1, 2, 2, 2, 2, 2, 3, 1, 2, 2, 1, 3, 1, 2, 2, 2, 1, 2, 3,…
+    ## $ COD_ENSE2  <int> 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,…
+    ## $ RURAL_RBD  <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+    ## $ COD_JOR    <int> 1, 1, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 1, 3, 3, 1, 3, 3, 3, 3,…
+    ## $ MRUN       <int> 19356346, 6516136, 11669840, 15538980, 22189478, 2582970, 2…
+    ## $ GEN_ALU    <int> 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2,…
+    ## $ EDAD_ALU   <int> 18, 17, 18, 18, 17, 17, 18, 17, 17, 17, 17, 18, 17, 17, 18,…
+    ## $ PROM_GRAL  <dbl> 6.4, 5.8, 6.4, 5.8, 5.6, 6.6, 6.8, 6.0, 6.3, 6.0, 6.4, 5.9,…
+    ## $ ASISTENCIA <int> 97, 82, 71, 92, 97, 95, 86, 91, 96, 97, 95, 85, 98, 81, 93,…
+    ## $ SIT_FIN_R  <chr> "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P",…
 
 ## Ejercicio 6. Crear una distribución muestral de medias
 
@@ -366,11 +379,11 @@ dplyr::glimpse()
 distribucion_de_medias <- coleccion_de_muestras %>%
 group_by(sample) %>%
 summarize(
-  stat_mean = mean(PROM_GRAL)
+  stat_mean = mean(PROM_GRAL, na.rm = TRUE)
 )
 
 
-# muestra de 10 muuestras.
+# muestra de 10 muestras.
 distribucion_de_medias %>%
 dplyr::slice_sample(n = 10) %>%
 knitr::kable(., digits = 2)
@@ -388,10 +401,6 @@ knitr::kable(., digits = 2)
 | 91     |      5.98 |
 | 380    |      5.82 |
 | 207    |      5.85 |
-
-- **Respuesta**
-  - Cantidad de medias:
-    `#....indicar su respuesta en esta línea, y borrar este comentario.`
 
 ## Ejercicio 7. Media y desviación estándar de la distribución muestral
 
@@ -424,6 +433,13 @@ media_poblacional
 
     ## [1] 5.908
 
+``` r
+# media de la población
+desviacion_poblacional
+```
+
+    ## [1] 1.33379
+
 ## Ejercicio 8. Error estandar de media.
 
 - Recordemos que el error estandar de la media, es desviación estandar
@@ -431,7 +447,7 @@ media_poblacional
 
 - Este término puede ser calculado con la siguiente operación
 
-$$\frac{\sigma}{sqrt{n}}$$
+$$S.E. = \frac{\sigma}{\sqrt{n}}$$
 
 - Vamos a generar este numero, empleando a la distribución muestral, y
   por medio de la formula.
@@ -575,10 +591,10 @@ dplyr::glimpse()
 
     ## Rows: 500
     ## Columns: 4
-    ## $ sample    [3m[38;5;246m<chr>[39m[23m "1", "10", "100", "101", "102", "103", "104", "105", "106", …
-    ## $ stat_mean [3m[38;5;246m<dbl>[39m[23m 5.90300, 5.92025, 5.97425, 5.87825, 5.90775, 6.05125, 5.9127…
-    ## $ ll        [3m[38;5;246m<dbl>[39m[23m 5.772291, 5.789541, 5.843541, 5.747541, 5.777041, 5.920541, …
-    ## $ ul        [3m[38;5;246m<dbl>[39m[23m 6.033709, 6.050959, 6.104959, 6.008959, 6.038459, 6.181959, …
+    ## $ sample    <chr> "1", "10", "100", "101", "102", "103", "104", "105", "106", …
+    ## $ stat_mean <dbl> 5.90300, 5.92025, 5.97425, 5.87825, 5.90775, 6.05125, 5.9127…
+    ## $ ll        <dbl> 5.772291, 5.789541, 5.843541, 5.747541, 5.777041, 5.920541, …
+    ## $ ul        <dbl> 6.033709, 6.050959, 6.104959, 6.008959, 6.038459, 6.181959, …
 
 ``` r
 # muestra de 20 valores de la tabla generada
@@ -669,11 +685,11 @@ dplyr::glimpse()
 
     ## Rows: 500
     ## Columns: 5
-    ## $ sample    [3m[38;5;246m<chr>[39m[23m "1", "10", "100", "101", "102", "103", "104", "105", "106", …
-    ## $ stat_mean [3m[38;5;246m<dbl>[39m[23m 5.90300, 5.92025, 5.97425, 5.87825, 5.90775, 6.05125, 5.9127…
-    ## $ ll        [3m[38;5;246m<dbl>[39m[23m 5.772291, 5.789541, 5.843541, 5.747541, 5.777041, 5.920541, …
-    ## $ ul        [3m[38;5;246m<dbl>[39m[23m 6.033709, 6.050959, 6.104959, 6.008959, 6.038459, 6.181959, …
-    ## $ status    [3m[38;5;246m<chr>[39m[23m "yes", "yes", "yes", "yes", "yes", "no", "yes", "yes", "yes"…
+    ## $ sample    <chr> "1", "10", "100", "101", "102", "103", "104", "105", "106", …
+    ## $ stat_mean <dbl> 5.90300, 5.92025, 5.97425, 5.87825, 5.90775, 6.05125, 5.9127…
+    ## $ ll        <dbl> 5.772291, 5.789541, 5.843541, 5.747541, 5.777041, 5.920541, …
+    ## $ ul        <dbl> 6.033709, 6.050959, 6.104959, 6.008959, 6.038459, 6.181959, …
+    ## $ status    <chr> "yes", "yes", "yes", "yes", "yes", "no", "yes", "yes", "yes"…
 
 ``` r
 # Nota: hay varias manerar de obtener a la variable status, ver Anexo 11.1
@@ -721,6 +737,17 @@ confint()
     ##               2.5 %  97.5 %
     ## (Intercept) 5.77003 6.03597
 
+``` r
+# extraer el intervalo de confianza sobre la media
+lm(PROM_GRAL ~ 1, data = muestra_n400) %>%
+broom::tidy(., conf.int = TRUE, conf.level = 0.95) %>%
+knitr::kable(., digits = 2)
+```
+
+| term        | estimate | std.error | statistic | p.value | conf.low | conf.high |
+|:------------|---------:|----------:|----------:|--------:|---------:|----------:|
+| (Intercept) |      5.9 |      0.07 |     87.27 |       0 |     5.77 |      6.04 |
+
 - **¿Qué implica que una muestra aleatoria contenga al parámetro
   poblacional?**
 
@@ -752,6 +779,7 @@ sd_pop  <- sd(data_notas$PROM_GRAL, na.rm = TRUE) * sqrt((n_pop-1)/n_pop)
 
 
 # mostrar ambos estimados
+library(dplyr)
 data.frame(
 estimados = c('sd', 'sd', 'var', 'var'),
 tipo = c('muestral', 'poblacional', 'muestral', 'poblacional'),
@@ -845,6 +873,16 @@ knitr::kable(., digits = 2)
 
 # especificar que una tabla de datos, es una muestra aleatoria
 library(srvyr)
+```
+
+    ## 
+    ## Attaching package: 'srvyr'
+
+    ## The following object is masked from 'package:stats':
+    ## 
+    ##     filter
+
+``` r
 n400_srs <- muestra_n400 %>% 
             as_survey_design(ids = 1)
 

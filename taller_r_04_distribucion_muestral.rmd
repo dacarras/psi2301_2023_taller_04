@@ -47,7 +47,7 @@ LET_CUR    = Letra Curso
 
 COD_DEPE2  = Código de dependencia escolar
              1 = Municipal
-             2 = Particular Subvecnionado
+             2 = Particular Siubvencionada
              3 = Particular Pagado
              4 = Coporación de Administración delegada
              5 = Servicio Local de Educación
@@ -61,8 +61,6 @@ COD_JOR    = Jornada a la que asiste a clases
              2 = Tarde
              3 = Mañana y Tarde
              4 = Vespertina/Noctura
-
-LET_CUR    = Letra del curso
 
 MRUN       = Máscara del RUN del alumno
              Código único que identifica al estudiante en los registros nacionales.
@@ -230,7 +228,7 @@ muestra_n400 <- dplyr::slice_sample(
 
 # Nota: la función dplyr::slice_sample(), permite crear muestras aleatorias simples.
 #       Esta función toma como argumentos a "n = ", con el cual podemos especificar el tamaño de la muestra que queremos.
-#       Además, con el argumetno "replace = TRUE", le indicamos a R que pueda generar muestras aleatorias,
+#       Además, con el argumento "replace = TRUE", le indicamos a R que pueda generar muestras aleatorias,
 #       que tengan la misma probabilidad de ocurrir. Es decir que, las muestras generadas, podrían repetir
 #       observaciones entre cada muestreo, replica del ejercicio.
 #       Previo a la generacion de la muestra, fijamos el seed, para poder replicar los resultados generados.
@@ -250,7 +248,7 @@ muestra_n400 <- dplyr::slice_sample(
 ```{r}
 
 
-
+library(dplyr)
 # extraer el intervalo de confianza sobre la media
 lm(PROM_GRAL ~ 1, data = muestra_n400) %>%
 confint()
@@ -322,21 +320,17 @@ dplyr::glimpse()
 distribucion_de_medias <- coleccion_de_muestras %>%
 group_by(sample) %>%
 summarize(
-  stat_mean = mean(PROM_GRAL)
+  stat_mean = mean(PROM_GRAL, na.rm = TRUE)
 )
 
 
-# muestra de 10 muuestras.
+# muestra de 10 muestras.
 distribucion_de_medias %>%
 dplyr::slice_sample(n = 10) %>%
 knitr::kable(., digits = 2)
 
 
-
 ```
-
-- **Respuesta**
-  - Cantidad de medias: `#....indicar su respuesta en esta línea, y borrar este comentario.`
 
 
 ## Ejercicio 7. Media y desviación estándar de la distribución muestral
@@ -359,6 +353,9 @@ knitr::kable(., digits = 2)
 # media de la población
 media_poblacional
 
+# media de la población
+desviacion_poblacional
+
 ```
 
 
@@ -368,7 +365,7 @@ media_poblacional
 
 - Este término puede ser calculado con la siguiente operación
 
-$$\frac{\sigma}{sqrt{n}}$$
+$$S.E. = \frac{\sigma}{\sqrt{n}}$$
 
 - Vamos a generar este numero, empleando a la distribución muestral, y por medio de la formula.
 
@@ -538,7 +535,6 @@ proportion = mean(status == 'yes')
 knitr::kable(., digits = 2)
 
 
-
 ```
 
 
@@ -564,6 +560,14 @@ muestra_n400 <- dplyr::slice_sample(
 # extraer el intervalo de confianza sobre la media
 lm(PROM_GRAL ~ 1, data = muestra_n400) %>%
 confint()
+
+
+# extraer el intervalo de confianza sobre la media
+lm(PROM_GRAL ~ 1, data = muestra_n400) %>%
+broom::tidy(., conf.int = TRUE, conf.level = 0.95) %>%
+knitr::kable(., digits = 2)
+
+
 
 ```
 
@@ -598,6 +602,7 @@ sd_pop  <- sd(data_notas$PROM_GRAL, na.rm = TRUE) * sqrt((n_pop-1)/n_pop)
 
 
 # mostrar ambos estimados
+library(dplyr)
 data.frame(
 estimados = c('sd', 'sd', 'var', 'var'),
 tipo = c('muestral', 'poblacional', 'muestral', 'poblacional'),
@@ -902,7 +907,6 @@ summarize(
 proportion = mean(status == 'yes')
 ) %>%
 knitr::kable(., digits = 2)
-
 
 ```
 
